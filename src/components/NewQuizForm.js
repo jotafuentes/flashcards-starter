@@ -24,9 +24,11 @@ export default function NewQuizForm() {
     const cardIds = [];
 
     // create the new cards here and add each card's id to cardIds
-    dispatch(addCard({
-      
-    }))
+    cards.forEach(card => {
+      let id = uuidv4()
+      cardIds.push(id)
+      dispatch(addCard({...card, id: id}))
+    })
     // create the new quiz here
     dispatch(newQuizThunk({
       name: name,
